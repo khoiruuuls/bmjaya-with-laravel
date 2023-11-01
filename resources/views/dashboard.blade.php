@@ -1,9 +1,4 @@
 <x-app-layout>
-    {{-- <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot> --}}
 
     <div class="flex flex-col sm:flex-row">
         <div class="w-full sm:w-1/2 py-12"> <!-- Column 1: Take up half width -->
@@ -26,9 +21,9 @@
                         </div>
                         @if (Auth::user()->role_id == 1)
                             <div class="flex justify-between">
-                                <a href="{{ route('logout-and-register') }}">
+                                <a href="{{ route('sales.show') }}"> {{-- {{ route('logout-and-register') }} --}}
                                     <x-button class="mt-4">
-                                        Register Sales
+                                        Lihat Sales
                                     </x-button>
                                 </a>
 

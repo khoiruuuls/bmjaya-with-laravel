@@ -13,4 +13,10 @@ class AuthRedirectController extends Controller
         Auth::logout();
         return redirect()->route('register');
     }
+
+    public function logout(): RedirectResponse
+    {
+        Auth::logout();
+        return redirect()->route("login");
+    }
 }

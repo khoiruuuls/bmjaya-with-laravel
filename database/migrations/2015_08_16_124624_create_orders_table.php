@@ -18,6 +18,8 @@ return new class extends Migration
             $table->decimal('ukuran', 12, 2);
             $table->foreignId('user_id')->constrained('users')->nullable();
             $table->date('date_order')->nullable();
+            $table->string('month_order')->nullable(); // Tambahkan kolom 'month_order'
+            $table->string('week_order')->nullable();
             $table->timestamps();
         });
     }

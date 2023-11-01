@@ -9,16 +9,18 @@
                         </div>
                     @endif
 
+                    <x-button class="mb-5">
+                        <a href="{{ route('logout-and-register') }}">
+                            Daftarkan sales
+                        </a>
+                    </x-button>
+
                     <table id="myTable">
                         <thead>
                             <tr>
-                                <th>Order ID</th>
-                                <th>Gramature</th>
-                                <th>Coresta</th>
-                                <th>Ukuran</th>
-                                <th>Order</th>
-                                <th>Jadwal</th>
-                                <th>Nama Pemesan</th>
+                                <th>Nomer</th>
+                                <th>Name</th>
+                                <th>Employee ID</th>
                                 <th>Edit</th>
                                 <th>Hapus</th>
                             </tr>
@@ -29,7 +31,7 @@
                                 $hasData = false;
                             @endphp
 
-                            @foreach ($orders as $order)
+                            @foreach ($sales as $order)
                                 @if (Auth::user()->role_id == 1 || $order->user_id == Auth::user()->id)
                                     @php
                                         $num++;
@@ -38,23 +40,15 @@
                                     <tr class="text-center">
                                         <td class="border px-4 py-2" data-order="{{ $num }}">{{ $num }}
                                         </td>
-                                        <td class="border px-4 py-2">{{ $order->gramature }}</td>
-                                        <td class="border px-4 py-2">{{ $order->coresta }}</td>
-                                        <td class="border px-4 py-2">{{ $order->ukuran }}</td>
+                                        <td class="border px-4 py-2">{{ $order->name }}</td>
+                                        <td class="border px-4 py-2">{{ $order->employee_id }}</td>
                                         <td class="border px-4 py-2">
-                                            {{ 'Minggu - ' . $order->week_order . ', ' . date('F Y', strtotime($order->month_order)) }}
-
-                                        </td>
-                                        <td class="border px-4 py-2">{{ date('d F Y', strtotime($order->date_order)) }}
-                                        </td>
-                                        <td class="border px-4 py-2">{{ $order->user->name }}</td>
-                                        <td class="border px-4 py-2">
-                                            <a href="{{ route('orders.edit', $order->id) }}" class="text-2xl">
+                                            <a href="{{ route('sales.edit', $order->id) }}" class="text-2xl">
                                                 <i class="ri-edit-box-line"></i>
                                             </a>
                                         </td>
                                         <td class="border px-4 py-2">
-                                            <form action="{{ route('orders.destroy', $order->id) }}" method="POST">
+                                            <form action="{{ route('sales.destroy', $order->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="text-2xl text-red-500 hover:text-red-700">

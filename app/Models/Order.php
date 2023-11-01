@@ -9,7 +9,13 @@ class Order extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'gramature', 'coresta', 'ukuran', 'user_id', 'date_order'
+        'gramature',
+        'coresta',
+        'ukuran',
+        'user_id',
+        'date_order',
+        'month_order',
+        'week_order',
     ];
 
     public function user()
